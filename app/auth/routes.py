@@ -4,7 +4,7 @@ auth = Blueprint('auth', __name__, template_folder='auth_templates', url_prefix=
 
 
 from .auth_forms import Login_Form, RegisterUserForm
-from app.models import User
+from app.models import User, db
 from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -19,9 +19,8 @@ def login():
             if user and check_password_hash(user.password, login_form.password.data):
                 login_user(user)
                 print(current_user, current_user.__dict__)
-                flash(f'Welcome back{current_user.username.data}')
+                flash(f'Welcome back {current_user.username}', category='success')
                 return redirect (url_for('user_homepage'))
-    else:
         # bad form info - let them try again
         flash(f'Login failed, incorrect username or password')
         print('login failed')
@@ -33,17 +32,30 @@ def registerUser():
     rform=RegisterUserForm()
     if request.method=='POST':
         if rform.validate_on_submit(): # user provided valid form information
-            print(rform.data)
-            flash(f"Welcome to the What's Next family {rform.username.data}")
-            return redirect (url_for('userprofile'))
+            try:
+                # initialize instance of a new User in User database
+                new_user = User(rform.username.data, rform.email.data, rform.password.data,rform.first_name.data, rform.last_name.data)
+                # add them to the database and commit change to database
+                db.session.add(new_user)
+                db.session.commit()
+                # successful registration - redirect user to user_homepage (or explore page)
+                print(f'{rform.username.data} user created successfully')
+            except: 
+                flash('Username or E-mail is taken. Please try again with a different entry.', category='warning')
+                return redirect (url_for('auth.registerUser'))
+            # log in user
+            login_user(new_user)
+            flash(f"Welcome to the What's Next family {rform.username.data}", category='success')
+            return redirect (url_for('user_profile_page'))
+            
         else: # bad form input - reroute to same page again to let them try again
-            flash('There was an issue with your registration form - either your username is taken or your passwords did not match. PLease try again')
-            return redirect(url_for('auth.register'))
+            flash('There was an issue with your registration form - either passwords did not match or you provided an improper email/username. Please try again', category='info')
+            return redirect(url_for('auth.registerUser'))
     return render_template('register.html', rform=rform)
 
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
-    flash(f"You've been logged out", category='danger')
-    return redirect(url_for('home'))
+    flash(f"You've been logged out", category='secondary')
+    return redirect(url_for('auth.login'))
