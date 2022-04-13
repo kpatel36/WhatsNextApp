@@ -1,0 +1,95 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}
+User Homepage
+{% endblock title %}
+
+{% block css %}
+<link ref="stylesheet" href="../static/css/user-home.css">
+{% endblock css %}
+
+{% block content %}
+<div class="container-fluid p-5">
+    <div class="row d-flex flex-column justify-content-center align-content-center">
+        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
+            <h3 class="user_homepage_row_header">New Releases in TV</h3>
+            <div class="card-deck">
+                <div class="card">New TV - Card 1</div>
+                <div class="card">New TV - Card 2</div>
+                <div class="card">New TV - Card 3</div>
+                <div class="card">New TV - Card 4</div>
+                <div class="card">New TV - Card 5</div>
+                <div class="card">New TV - Card 6</div>
+            </div>
+            <div class="user_homepage_row_footer_link ml-auto">
+                <a class="view_more_link" href="{{ url_for('tv_series') }}">View More >>></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row d-flex flex-column justify-content-center align-content-center">
+        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
+            <h3 class="user_homepage_row_header">New Releases in Movies</h3>
+            <div class="card-deck">
+                <div class="card">New Movies - Card 1</div>
+                <div class="card">New Movies - Card 2</div>
+                <div class="card">New Movies - Card 3</div>
+                <div class="card">New Movies - Card 4</div>
+                <div class="card">New Movies - Card 5</div>
+                <div class="card">New Movies - Card 6</div>
+            </div>
+            <div class="user_homepage_row_footer_link ml-auto">
+                <a class="view_more_link" href="{{ url_for('movies') }}">View More >>></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row d-flex flex-column justify-content-center align-content-center">
+        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
+            <h3 class="user_homepage_row_header">Popular New Podcasts</h3>
+            <div class="card-deck">
+                <div class="card">Popular Podcasts - Card 1</div>
+                <div class="card">Popular Podcasts - Card 2</div>
+                <div class="card">Popular Podcasts - Card 3</div>
+                <div class="card">Popular Podcasts - Card 4</div>
+                <div class="card">Popular Podcasts - Card 5</div>
+                <div class="card">Popular Podcasts - Card 6</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid p-5">
+    <div class="row">
+        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
+            <div class="card-deck">
+                <h3 class="user_homepage_row_header">Popular New Books</h3>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- should have cards linking to other friends pages-->
+<div class="container-fluid">
+    <div class="row d-flex flex-column justify-content-center align-content-center">
+        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
+            <h3 class="user_homepage_row_header">See What Your Friends are Loving....</h3>
+
+            <div class="card-deck">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

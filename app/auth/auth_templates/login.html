@@ -1,0 +1,42 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block css %}
+<!-- <link rel="stylesheet" href="../../static/css/general_layout.css"> -->
+<link rel="stylesheet" href="../../static/css/auth_pages.css">
+{% endblock css %} 
+
+<!-- app\auth\auth_css\login_cust.css
+app\auth\auth_templates\login.html -->
+
+{% block content %}
+<div class="container-fluid justify-content-center p-3 m-0">
+    <div class="row justify-content-center align-content-center mt-4">
+        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box">
+            <h1 class="login_form_header">LOGIN</h1>
+            <form method="POST">
+                {{ login_form.hidden_tag() }}
+                <div class="form-group">
+                    <fieldset class="login_form_field mt-3 mb-2" id="username-field">
+                        {{ login_form.username.label(class="form_field_label") }}
+                        {{ login_form.username(class="form-control", placeholder="Username") }}
+                    </fieldset>
+                    <fieldset class="login_form_field mt-3 mb-2" id="password-field">
+                        {{ login_form.password.label(class="form_field_label") }}
+                        {{ login_form.password(class="form-control", placeholder="Password")}}
+                    </fieldset>
+                    <br>
+                    {{ login_form.submit(class='btn btn-block btn-info submit-button') }}
+                </div>
+            </form>
+            <div class="login_footer d-flex flex-row justify-content-around pt-3">
+                <p class="login_footer_text">Not a member yet?</p>
+                <a href="{{ url_for('auth.registerUser') }}" class="login_footer_link">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

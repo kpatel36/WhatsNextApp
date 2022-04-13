@@ -1,0 +1,50 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}
+Register New Account
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="../../static/css/auth_pages.css">
+{% endblock css %}
+
+{% block content %}
+<div class="container-fluid justify-content-center p-3 m-0">
+    <div class="row justify-content-center align-content-center mt-5">
+        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
+            <h1 class="rform_header">Register New Account</h1>
+            <form method="POST">
+                {{ rform.hidden_tag() }}
+                <div class="form-group">
+                    <fieldset class="rform_field mt-3 mb-2" id="username-field">
+                        {{ rform.username.label(class="form_field_label") }}
+                        {{ rform.username(class="form-control", placeholder="Username") }}
+                    </fieldset>
+                    <fieldset class="rform_field mt-3 mb-2" id="email-field">
+                        {{ rform.email.label(class="form_field_label") }}
+                        {{ rform.email(class="form-control", placeholder="Email") }}
+                    </fieldset>
+                    <fieldset class="rform_field mt-3 mb-2" id="first_name-field">
+                        {{ rform.first_name.label(class="form_field_label") }}
+                        {{ rform.first_name(class="form-control", placeholder="First Name") }}
+                    </fieldset>
+                    <fieldset class="rform_field mt-3 mb-2" id="last_name-field">
+                        {{ rform.last_name.label(class="form_field_label") }}
+                        {{ rform.last_name(class="form-control", placeholder="Last Name") }}
+                    </fieldset>
+                    <fieldset class="rform_field mt-3 mb-2" id="password-field">
+                        {{ rform.password.label(class="form_field_label") }}
+                        {{ rform.password(class="form-control", placeholder="Password") }}
+                    </fieldset>
+                    <fieldset class="rform_field mt-3 mb-2" id="confirm_password-field">
+                        {{ rform.confirm_password.label(class="form_field_label") }}
+                        {{ rform.confirm_password(class="form-control", placeholder="Confirm Password") }}
+                    </fieldset>
+                    <br>
+                    {{ rform.submit(class='btn btn-block btn-info submit-button')}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

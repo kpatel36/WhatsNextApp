@@ -1,0 +1,56 @@
+.form-box{
+    padding: 25px 34px;
+    background-image: radial-gradient(circle,aliceblue, rgb(222, 235, 247));
+    border: 3px solid transparent;
+    /* linear-gradient(to bottom, rgb(7, 7, 103),navy); */
+    border-radius: 15px;
+    align-content: center;
+    /* box-shadow: 3px 3px 2px navy; */
+    box-shadow:6px 6px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-group, fieldset, .form_field_label{
+    background-image: radial-gradient(circle,aliceblue, rgb(222, 235, 247));
+    color: darkblue;
+    text-shadow: 0 0 5px cadetblue;
+}
+
+
+.login_form_header, .rform_header{
+    background: transparent;
+    text-align: center;
+    color: navy;
+    text-shadow: 0 0 8px cadetblue;
+}
+
+.submit-button{
+    background: transparent;
+    border-radius: 5px;
+    /* box-shadow: 1px 1px 1px 2px slategray; */
+    background-image: linear-gradient(to bottom, rgb(165, 213, 232), teal);
+}
+
+.form-control{
+    border: 2px inset aliceblue;
+    border-radius: 5px;
+}
+
+.form-control:hover{
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgb(135, 199, 255);
+
+}
+
+.submit-button:hover{
+    background-image: linear-gradient(to bottom, lightblue, rgb(4, 146, 146), rgb(1, 117, 117));
+    box-shadow: 0 0 6px rgb(1, 145, 145);
+}
+
+.login_footer, .login_footer_text{
+    background-color: transparent;
+    color:rgba(0, 0, 0)
+}
+.login_footer_link:hover{
+    color: cornflowerblue;
+    list-style-type: none;
+}

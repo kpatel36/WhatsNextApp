@@ -1,0 +1,29 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Tahoma', Geneva, Verdana, sans-serif;
+    /* background-color:rgb(28, 23, 43); */
+    background-color: lightblue;
+    color:white;
+}
+
+.body{
+    background-color: transparent;
+}
+
+
+.navbar-nav{ 
+    /* background: rgb(28, 28, 33); */
+    color: rgb(47, 192, 47);
+}
+
+.dropdown-menu{
+    background: seashell;
+}
+
+.nav-link, a:link {
+    color: white;
+}
+.card{
+    background: transparent;
+}
