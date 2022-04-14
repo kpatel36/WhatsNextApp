@@ -1,8 +1,9 @@
-from ...env import tmdb_api_key
+import os
 import requests as r
 # trending movies
 def get_trending_movies():
     trending_movies=[]
+    tmdb_api_key=os.environ.get('tmdb_api_key')
     trending_movies_response = r.get(f'https://api.themoviedb.org/3/trending/movie/week?api_key={tmdb_api_key}')
     if trending_movies_response == 200:
         trending_this_week_movie_api = trending_movies_response.json()
@@ -18,4 +19,3 @@ def get_trending_movies():
         print(trending_movies,trending_movies_response.status_code)
     return trending_movies
 
-    .env
