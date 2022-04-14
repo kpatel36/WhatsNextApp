@@ -4,8 +4,10 @@ from config import Config
 from .auth.routes import auth
 from .models import db, login
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, origin=(["*"]))
 
 app.config.from_object(Config)
 
