@@ -41,7 +41,7 @@ def registerUser():
                 # successful registration - redirect user to user_homepage (or explore page)
                 print(f'{rform.username.data} user created successfully')
             except: 
-                flash('Username or E-mail is taken. Please try again with a different entry.', category='warning')
+                flash('Username or E-mail is taken. Please try something else.', category='warning')
                 return redirect (url_for('auth.registerUser'))
             # log in user
             login_user(new_user)
@@ -49,7 +49,7 @@ def registerUser():
             return redirect (url_for('user_profile_page'))
             
         else: # bad form input - reroute to same page again to let them try again
-            flash('There was an issue with your registration form - either passwords did not match or you provided an improper email/username. Please try again', category='info')
+            flash('There was an issue with your registration - either your passwords did not match or you provided an improper email/username. Please try again', category='info')
             return redirect(url_for('auth.registerUser'))
     return render_template('register.html', rform=rform)
 

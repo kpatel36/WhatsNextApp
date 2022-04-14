@@ -35,14 +35,15 @@ def movies():
 def tv_series():
     tv_list_length_10_cards = ['a1','b2','c3','d4','e5','f6','g7','h8','i9','j10']
     print ('trying to look at current popular tv_series page')
+    print(len(tv_list_length_10_cards))
     return render_template('tv_series.html',TV_list_length=tv_list_length_10_cards)
 
 
 @app.route('/podcasts')
 def podcasts():
     print ('trying to look at current popular podcasts page')
-    podcast_list_length_8_cards = ['a1','b2','c3','d4','e5','f6','g7','h8']
-    return render_template('podcasts.html', podcasts_list_length = podcast_list_length_8_cards)
+    podcast_list_length_6_cards = ['a1','b2','c3','d4','e5','f6']
+    return render_template('podcasts.html', podcasts_list_length = podcast_list_length_6_cards)
 
 @app.route('/books')
 def books():

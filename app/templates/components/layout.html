@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>
+    <title> What's Next? | 
         {% block title %}
         {% endblock title %}
     </title>
@@ -20,10 +20,10 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div class="collapse navbar-collapse" id="navbarToggler">
           <a class="navbar-brand" href="#">What's Next</a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
               <li class="nav-item active">
@@ -50,11 +50,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('user_profile_page') }}" >Your Profile and Saves</a>
               </li>
-              <li class="nav-item dropdown mr-5">
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{ current_user.username }}
                 </a>
-                <div class="dropdown-menu mr-3" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
                   <a href="{{ url_for('user_homepage') }}" class="dropdown-item">Your Newsfeed</a>
                   <a href="#" class="dropdown-item">Settings</a>
                   <a href="{{ url_for('auth.logout') }}" class="dropdown-item">Logout</a>

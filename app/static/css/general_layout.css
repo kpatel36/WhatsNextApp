@@ -7,23 +7,67 @@
     color:white;
 }
 
-.body{
+body{
     background-color: transparent;
 }
-
-
 .navbar-nav{ 
     /* background: rgb(28, 28, 33); */
     color: rgb(47, 192, 47);
 }
 
+.navbar-toggler-icon{
+    color: brown;
+    background-color: aquamarine;
+    border: 5px solid green;
+}
+
+
+
 .dropdown-menu{
     background: seashell;
+    margin-right: 15rem;
 }
 
 .nav-link, a:link {
     color: white;
 }
+
+.card_row{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 3px 8px;
+}
+
+.card-deck{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    overflow-y: visible;
+    overflow-x: scroll; /* what do clip and auto do? */
+    padding:10px;
+    margin: 10px;
+    /* background-color: black;
+    color: white */
+    box-shadow: 0px 0px 5px 3px lightslategrey;
+}
 .card{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 100%;
+    object-fit: contain;
+    max-height: 100%;
     background: transparent;
+    padding: 15px;
+    margin: 5px 8px;
+    box-shadow: 2px 3px 4px lightslategray;
+}
+
+
+.card:hover{
+    box-shadow: 0px 3px 6px darkblue;
 }
