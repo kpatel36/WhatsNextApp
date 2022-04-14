@@ -1,6 +1,9 @@
+import requests
 from flask_login import login_required
 from app import app
 from flask import render_template, url_for
+from .services import get_trending_movies
+
 
 @app.route('/')
 def home():
@@ -28,8 +31,19 @@ def user_profile_page():
 @app.route('/movies')
 def movies():
     movie_list_length_8_cards = ['a1','b2','c3','d4','e5','f6','g7','h8']
-    print('trying to look at movies page')
-    return render_template('movies.html', movie_list_length = movie_list_length_8_cards)
+    # now_playing_movie_api_info= requests.get('https://api.themoviedb.org/3/movie/now_playing?api_key=301d8c6d14ea26985c4f28962cf87e39')
+    # now_playing_movie_api = now_playing_movie_api_info.json()
+    # # print(movie_api)
+    # # print(f"genres: {movie_api['genres']}, title: {movie_api['original_title']}, language: {movie_api['original_language']}")
+    # for x in now_playing_movie_api['results']:
+    #     # print(x)
+    #     print (f" movie title: {x['original_title']}")
+    #     print (f" movie overview: {x['overview']}")
+    #     print('trying to look at movies page')
+    trending_movies_list = get_trending_movies()
+    print(trending_movies_list)
+    print('trying to look at movies page')    
+    return render_template('movies.html', trending_movies_list= trending_movies_list, movie_list_length = movie_list_length_8_cards)
 
 @app.route('/tv_series')
 def tv_series():
