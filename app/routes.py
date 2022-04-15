@@ -2,7 +2,7 @@ import requests
 from flask_login import login_required
 from app import app
 from flask import render_template, url_for
-from .services import get_trending_movies
+from .services import get_trending_movies, get_trending_tv
 
 
 @app.route('/')
@@ -41,17 +41,21 @@ def movies():
     #     print (f" movie overview: {x['overview']}")
     #     print('trying to look at movies page')
     trending_movies_list = get_trending_movies()
-    print(trending_movies_list)
+    tml=trending_movies_list[:8]
     print('trying to look at movies page')    
-    return render_template('movies.html', trending_movies_list= trending_movies_list, movie_list_length = movie_list_length_8_cards)
+    return render_template('movies.html', tml=tml, trending_movies_list = trending_movies_list, movie_list_length = movie_list_length_8_cards)
 
 @app.route('/tv_series')
 def tv_series():
     tv_list_length_10_cards = ['a1','b2','c3','d4','e5','f6','g7','h8','i9','j10']
     print ('trying to look at current popular tv_series page')
-    print(len(tv_list_length_10_cards))
-    return render_template('tv_series.html',TV_list_length=tv_list_length_10_cards)
-
+    trending_tv= get_trending_tv()
+    # for x in trending_tv:
+    #     print(f"title: {x['trending_tv_title']}\noverview: {x['trending_tv_overview']}\npic path:{x['pic_path']}")
+    trending_tv1=trending_tv[:7]
+    trending_tv2=trending_tv[7:14]
+    trending_tv3=trending_tv[14:]
+    return render_template('tv_series.html',trending_tv1=trending_tv1,trending_tv2=trending_tv2,trending_tv3=trending_tv3,TV_list_length=tv_list_length_10_cards)
 
 @app.route('/podcasts')
 def podcasts():

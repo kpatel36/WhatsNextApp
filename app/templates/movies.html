@@ -10,43 +10,36 @@ Movies
 
 {% block content %}
 <div class="container-fluid mt-5">
-    <div class="row d-flex justify-content-center m-4 p-0">
-        <div class="col-12 col-xl-10 col-lg-12 col-md-12 col-sm-3 pr-0">
-            <h1 class="deck_header">MOVIE GROUP 1 - New Releases</h1>
-            <div class="card-deck d-flex flex-row">
-                {% for i in range(movie_list_length|length) %}
-                <div class="card p-4 d-flex flex-column align-content-center">
-                    <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                    <div class="card-text">Poster Pic</div>
-                    <div class="card-text">Title</div>
-                    <div class="card-text">Description?</div>
-                    <div class="buttons d-flex flex-row justify-content-between">
-                        <button class="btn-outline-info">Add to Favorites</button>
-                        <button class="btn-outline-info">Add to Watchlist</button>
-                    </div>
+    <div class="row">
+        <h1 class="deck_header">MOVIE GROUP 2 - Currently Trending</h1>
+        <div class="card-deck">
+            {% for i in range(tml|length) %}
+            <div class="card p-4 d-flex flex-column align-content-center">
+                <img src="https://image.tmdb.org/t/p/w200/{{ tml[i]['pic_link'] }}" alt="{{ tml[i]['trending_movie_title'] }}" class="movie-poster">
+                <div class="card-text">{{ tml[i]['trending_movie_title'] }}</div>
+                <div class="card-text">{{ tml[i]['trending_movie_overview'] }}</div>
+                <div class="buttons d-flex flex-row justify-content-between">
+                    <button class="btn-outline-info">Add to Favorites</button>
+                    <button class="btn-outline-info">Add to Watchlist</button>
                 </div>
-                {% endfor %}
-            </div> <!-- end of card-deck div-->
-        </div> <!--end of col div-->
-    </div> <!--end of row div-->
+            </div>
+            {% endfor %}
     <div class="row d-flex justify-content-center m-4">
-        <div class="col-10 col-xl-10 col-lg-10 col-md-6 col-sm-3">
-            <h1 class="deck_header">MOVIE GROUP 2 - Currently Trending</h1>
-            <div class="card-deck d-flex flex-row">
-                {% for i in range(trending_movies_list|length) %}
-                <div class="card p-4 d-flex flex-column align-content-center">
-                    <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                    <div class="card-text">Poster Pic</div>
-                    <div class="card-text">{{ trending_movies_list[i]['trending_movie_title'] }}</div>
-                    <div class="card-text">{{ trending_movies_list[i]['trending_movie_overview'] }}</div>
-                    <div class="buttons d-flex flex-row justify-content-between">
-                        <button class="btn-outline-info">Add to Favorites</button>
-                        <button class="btn-outline-info">Add to Watchlist</button>
-                    </div>
+        <h1 class="deck_header">MOVIE GROUP 2 - Currently Trending</h1>
+        <div class="card-deck d-flex flex-row">
+            {% for i in range(trending_movies_list|length//2) %}
+            <div class="card p-4 d-flex flex-column align-content-center">
+                <img src="https://image.tmdb.org/t/p/w200/{{ trending_movies_list[i]['pic_link'] }}" alt="{{ trending_movies_list[i]['trending_movie_title'] }}" class="movie-poster">
+                <div class="card-text">Poster Pic</div>
+                <div class="card-text">{{ trending_movies_list[i]['trending_movie_title'] }}</div>
+                <div class="card-text">{{ trending_movies_list[i]['trending_movie_overview'] }}</div>
+                <div class="buttons d-flex flex-row justify-content-between">
+                    <button class="btn-outline-info">Add to Favorites</button>
+                    <button class="btn-outline-info">Add to Watchlist</button>
                 </div>
-                {% endfor %}
-            </div> <!-- end of card-deck div-->
-        </div> <!--end of col div-->
+            </div>
+            {% endfor %}
+        </div> <!-- end of card-deck div-->
     </div> <!--end of row div-->
     <div class="row d-flex justify-content-center m-4">
         <div class="col-10 col-xl-10 col-lg-10 col-md-6 col-sm-3">

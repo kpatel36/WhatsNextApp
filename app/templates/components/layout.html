@@ -41,6 +41,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('books') }}">Books</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('user_lists.findUsers') }}">Find Other Users</a>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
@@ -48,7 +51,10 @@
                 </li>
               {% if current_user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('user_profile_page') }}" >Your Profile and Saves</a>
+                <a class="nav-link" href="{{ url_for('user_lists.userProfile', username=current_user.username) }}" >Your Profile and Saves</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('user_lists.newsfeed') }}" >Your Newsfeed</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
