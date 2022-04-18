@@ -7,64 +7,37 @@ Home
 {% block content %}
 <div class="container-fluid d-flex flex-column justify-content-center">
     <!-- row for TV SERIES -->
-    <div class="row card_row">
-        <h1 class="deck_header">Media Type: TV</h1>
-        <div class="card-deck">
-            {% for i in range(9) %}
-            <div class="card">
-                <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                <div class="card-text">Poster Pic</div>
-                <div class="card-text">Title</div>
-                <div class="card-text">Description?</div>
-                <div class="buttons d-flex flex-column justify-space-between">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
-                </div>
+    <div class="row d-flex flex-column justify-content-between ml-4 mb-0">
+        <h1 class="deck_header">TRENDING TV SERIES</h1>
+        <a href="{{ url_for('tv_series') }}" class="view_more_link">View More>>></a>
+    </div>
+    <div class="row d-flex justify-content-center m-4">
+        <div class="card-deck d-flex flex-row">
+            {% for i in range(home_tv_shows|length//2) %}
+            <div class="card p-4 d-flex flex-column justify-content-center align-content-center">
+                <img src="https://image.tmdb.org/t/p/w200/{{ home_tv_shows[i][0]['poster_path'] }}" alt="{{  home_tv_shows[i][0]['title'] }}" class="movie-poster">
+                <div class="card-text">{{  home_tv_shows[i][0]['name'] }}</div>
             </div>
             {% endfor %}
-        </div> <!-- end of card-deck div-->
-        <a href="{{ url_for('tv_series') }}" class="view_more_link ml-auto">View More>>></a>
+        </div>
     </div> <!--end of row div-->
 
     <!-- row for MOVIES -->
-    <div class="row card_row">
-        <h1 class="deck_header">Media Type: Movies</h1>
-        <div class="card-deck">
-            {% for i in range(10) %}
-            <div class="card">
-                <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                <div class="card-text">Poster Pic</div>
-                <div class="card-text">Title</div>
-                <div class="card-text">Description?</div>
-                <div class="buttons d-flex flex-column justify-space-between">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
-                </div>
+    <div class="row d-flex flex-column justify-content-between m-4 mb-0">
+        <h1 class="deck_header font-weight-bolder">MOVIES TRENDING TODAY</h1>
+        <a href="{{ url_for('movies') }}" class="font-size-large view_more_link">View More>>></a>
+    </div>
+    <div class="row d-flex justify-content-center m-4">
+        <div class="card-deck d-flex flex-row">
+            {% for i in range(home_movies_list|length//2) %}
+            <div class="card p-4 d-flex flex-column align-content-center">
+                <img src="https://image.tmdb.org/t/p/w200/{{ home_movies_list[i][0]['poster_path'] }}" alt="{{  home_movies_list[i][0]['title'] }}" class="movie-poster">
+                <div class="card-text justify-content-center mt-2">{{  home_movies_list[i][0]['title'] }}</div>
             </div>
             {% endfor %}
-        </div> <!-- end of card-deck div-->
-        <a href="{{ url_for('movies') }}" class="view_more_link ml-auto">View More>>></a>
+        </div>
     </div> <!--end of row div-->
+
     <!-- row for PODCASTS -->
-    <div class="row card_row">
-        <h1 class="deck_header">Media Type: PODCASTS</h1>
-        <div class="card-deck">
-            {% for i in range(9) %}
-            <div class="card">
-                <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                <div class="card-text">Poster Pic</div>
-                <div class="card-text">Title</div>
-                <div class="card-text">Description?</div>
-                <div class="card-text">Where to Watch/Listen</div>
-                <!-- buttons should only be displayed if user is logged in-->
-                <div class="buttons d-flex flex-row justify-content-between">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
-                </div>
-            </div>
-            {% endfor %}
-        </div> <!-- end of card-deck div-->
-        <a href="{{ url_for('podcasts') }}" class="view_more_link ml-auto">View More>>></a>
-    </div> <!--end of row div-->
 </div>
 {% endblock content %}

@@ -10,74 +10,54 @@ Movies
 
 {% block content %}
 <div class="container-fluid mt-5">
-    <div class="row">
-        <h1 class="deck_header">MOVIE GROUP 2 - Currently Trending</h1>
-        <div class="card-deck">
-            {% for i in range(tml|length) %}
-            <div class="card p-4 d-flex flex-column align-content-center">
-                <img src="https://image.tmdb.org/t/p/w200/{{ tml[i]['pic_link'] }}" alt="{{ tml[i]['trending_movie_title'] }}" class="movie-poster">
-                <div class="card-text">{{ tml[i]['trending_movie_title'] }}</div>
-                <div class="card-text">{{ tml[i]['trending_movie_overview'] }}</div>
-                <div class="buttons d-flex flex-row justify-content-between">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
-                </div>
-            </div>
-            {% endfor %}
     <div class="row d-flex justify-content-center m-4">
-        <h1 class="deck_header">MOVIE GROUP 2 - Currently Trending</h1>
+        <h1 class="deck_header">TRENDING</h1>
         <div class="card-deck d-flex flex-row">
-            {% for i in range(trending_movies_list|length//2) %}
+            {% for i in range(trend_movies|length//2) %}
             <div class="card p-4 d-flex flex-column align-content-center">
-                <img src="https://image.tmdb.org/t/p/w200/{{ trending_movies_list[i]['pic_link'] }}" alt="{{ trending_movies_list[i]['trending_movie_title'] }}" class="movie-poster">
-                <div class="card-text">Poster Pic</div>
-                <div class="card-text">{{ trending_movies_list[i]['trending_movie_title'] }}</div>
-                <div class="card-text">{{ trending_movies_list[i]['trending_movie_overview'] }}</div>
-                <div class="buttons d-flex flex-row justify-content-between">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
+                <img src="https://image.tmdb.org/t/p/w200/{{ trend_movies[i][0]['poster_path'] }}" alt="{{ trend_movies[i][0]['title'] }}" class="movie-poster">
+                <div class="card-text">{{ trend_movies[i][0]['title'] }}</div>
+                <div class="card-text">{{ trend_movies[i][0]['overview']}}</div>
+                <div class="buttons d-flex flex-row justify-space-between">
+                    <a href="{{ url_for('user_lists.addToMovie_Faves', movie_title=trend_movies[i][0]['title']) }}" class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a href="{{ url_for('user_lists.addToMovie_Watchlist', movie_title=trend_movies[i][0]['title']) }}" class="btn btn-outline-info">Add to Your Watchlist</a>
                 </div>
             </div>
             {% endfor %}
         </div> <!-- end of card-deck div-->
     </div> <!--end of row div-->
     <div class="row d-flex justify-content-center m-4">
-        <div class="col-10 col-xl-10 col-lg-10 col-md-6 col-sm-3">
-            <h1 class="deck_header">MOVIE GROUP 3 - Classics</h1>
-            <div class="card-deck d-flex flex-row">
-                {% for i in range(movie_list_length|length) %}
-                <div class="card p-4 d-flex flex-column align-content-center">
-                    <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                    <div class="card-text">Poster Pic</div>
-                    <div class="card-text">Title</div>
-                    <div class="card-text">Description?</div>
-                    <div class="buttons d-flex flex-row justify-space-between">
-                        <button class="btn-outline-info">Add to Favorites</button>
-                        <button class="btn-outline-info">Add to Watchlist</button>
-                    </div>
+        <h1 class="deck_header">NOW PLAYING</h1>
+        <div class="card-deck d-flex flex-row">
+            {% for i in range(now_playing_movies|length//2) %}
+            <div class="card p-4 d-flex flex-column align-content-center">
+                <img src="https://image.tmdb.org/t/p/w200/{{ now_playing_movies[i][0]['poster_path'] }}" alt="{{  now_playing_movies[i][0]['title'] }}" class="movie-poster">
+                <div class="card-text">{{  now_playing_movies[i][0]['title'] }}</div>
+                <div class="card-text">{{  now_playing_movies[i][0]['overview']}}</div>
+                <div class="buttons d-flex flex-row justify-space-between">
+                    <!-- <a href="{{ url_for('user_lists.addToMovie_Faves', movie_title=now_playing_movies[i][0]['title']) }}" class="btn btn-outline-info">Add to Favorites</a> -->
+                    <a href="{{ url_for('user_lists.addToMovie_Faves', movie_title=trend_movies[i][0]['title']) }}" class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a href="{{ url_for('user_lists.addToMovie_Watchlist', movie_title=trend_movies[i][0]['title']) }}" class="btn btn-outline-info">Add to Your Watchlist</a>
                 </div>
-                {% endfor %}
-            </div> <!-- end of card-deck div-->
-        </div> <!--end of col div-->
+            </div>
+            {% endfor %}
     </div> <!--end of row div-->
     <div class="row d-flex justify-content-center m-4">
-        <div class="col-10 col-xl-10 col-lg-10 col-md-6 col-sm-3">
-            <h1 class="deck_header">MOVIE GROUP 4 - Family Time Favorites</h1>
-            <div class="card-deck d-flex flex-row">
-                {% for i in range(movie_list_length|length) %}
-                <div class="card p-4 d-flex flex-column align-content-center">
-                    <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                    <div class="card-text">Poster Pic</div>
-                    <div class="card-text">Title</div>
-                    <div class="card-text">Description?</div>
-                    <div class="buttons d-flex flex-row justify-content-between">
-                        <button class="btn-outline-info">Add to Favorites</button>
-                        <button class="btn-outline-info">Add to Watchlist</button>
-                    </div>
+        <h1 class="deck_header">POPULAR</h1>
+        <div class="card-deck d-flex flex-row">
+            {% for i in range(pop|length//2) %}
+            <div class="card p-4 d-flex flex-column align-content-center" style="width:18rem;">
+                <img src="https://image.tmdb.org/t/p/w200/{{ pop[i][0]['poster_path'] }}" alt="{{ pop[i][0]['title'] }}" class="movie-poster">
+                <div class="card-text">{{ pop[i][0]['title'] }}</div>
+                <div class="card-text d-flex flex-wrap">{{ pop[i][0]['overview']}}</div>
+                <div class="buttons d-flex flex-column justify-space-between">
+                    <a href="{{ url_for('user_lists.addToMovie_Faves', movie_title=trend_movies[i][0]['title']) }}" class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a href="{{ url_for('user_lists.addToMovie_Watchlist', movie_title=trend_movies[i][0]['title']) }}" class="btn btn-outline-info">Add to Your Watchlist</a>
                 </div>
+            </div>
                 {% endfor %}
-            </div> <!-- end of card-deck div-->
-        </div> <!--end of col div-->
+        </div> <!-- end of card-deck div-->
     </div> <!--end of row div-->
+    
 </div> <!--end of container div-->
 {% endblock content %}

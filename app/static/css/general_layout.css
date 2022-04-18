@@ -3,7 +3,7 @@
     margin: 0px;
     font-family: 'Tahoma', Geneva, Verdana, sans-serif;
     /* background-color:rgb(28, 23, 43); */
-    background-color: lightblue;
+    background-color: rgb(26, 58, 68);
     color:white;
 }
 
@@ -16,11 +16,10 @@ body{
 }
 
 .navbar-toggler-icon{
-    color: brown;
-    background-color: aquamarine;
+    color: white;
+    background-color: rgb(26, 58, 68);
     border: 5px solid green;
 }
-
 
 
 .dropdown-menu{
@@ -45,7 +44,7 @@ body{
     justify-content: space-between;
     align-content: center;
     overflow-y: visible;
-    overflow-x: scroll; /* what do clip and auto do? */
+    overflow-x: hidden; /* what do clip and auto do? */
     padding:10px;
     margin: 10px;
     /* background-color: black;
@@ -66,7 +65,6 @@ body{
     margin: 5px 8px;
     box-shadow: 2px 3px 4px lightslategray;
 }
-
 
 .card:hover{
     box-shadow: 0px 3px 6px darkblue;

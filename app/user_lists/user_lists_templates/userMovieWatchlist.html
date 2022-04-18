@@ -1,0 +1,21 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}
+{ user.username }'s Movie Favorites
+{% endblock title %}
+
+{% block content%} 
+<div class="container-fluid">
+    <div class="row">
+        <ul>
+            {% for movie_watch_ind in users_movies_watchlist %}
+            <li>
+                <p>{{ movie_watch_ind.movie_title }} - {{ movie_watch_ind.timestamp }}</p>
+                <a href="{{ url_for('user_lists.delFromMovie_Watchlist', mwatchlist_id=movie_watch_ind.id) }}" class="btn btn-outline-info">Remove From Your Watchlist</a>
+                <a href="{{ url_for('user_lists.addToMovie_Faves', movie_title= movie_watch_ind.movie_title ) }}" class="btn btn-outline-info">Add to Your Favorites</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

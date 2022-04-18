@@ -9,23 +9,23 @@ User Homepage
 {% endblock css %}
 
 {% block content %}
-<div class="container-fluid p-5">
-    <div class="row d-flex flex-column justify-content-center align-content-center">
-        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
-            <h3 class="user_homepage_row_header">New Releases in TV</h3>
-            <div class="card-deck">
-                <div class="card">New TV - Card 1</div>
-                <div class="card">New TV - Card 2</div>
-                <div class="card">New TV - Card 3</div>
-                <div class="card">New TV - Card 4</div>
-                <div class="card">New TV - Card 5</div>
-                <div class="card">New TV - Card 6</div>
+<div class="container-fluid m-5">
+    <div class="row card_row">
+        <h1 class="deck_header">New Releases in TV</h1>
+        <div class="card-deck">
+            {% for i in range(latest_tv_list|length) %}
+            <div class="card">
+                <img src="https://image.tmdb.org/t/p/w200/{{ latest_tv_list[i][0]['poster_path'] }}" alt="{{ latest_tv_list[i]['name'] }}" class="tv_poster">
+                <div class="card-text show_title">{{ latest_tv_list[i][0]['name'] }}</div>
+                <div class="card-text show_description">{{ latest_tv_list[i][0]['overview'] }}</div>       
+                <div class="buttons-group d-flex flex-column justify-space-between">
+                    <a href="{{ url_for('user_lists.addToMovie_Faves', movie_title=latest_tv_list[i][0]['name']) }}" class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a href="#" class="btn btn-outline-info">Add to Your Watchlist</a>
+                </div>
             </div>
-            <div class="user_homepage_row_footer_link ml-auto">
-                <a class="view_more_link" href="{{ url_for('tv_series') }}">View More >>></a>
-            </div>
-        </div>
-    </div>
+            {% endfor %}
+        </div> <!-- end of card-deck div-->
+    </div> <!--end of row div-->
 </div>
 <div class="container-fluid">
     <div class="row d-flex flex-column justify-content-center align-content-center">
@@ -60,27 +60,10 @@ User Homepage
         </div>
     </div>
 </div>
-<div class="container-fluid p-5">
-    <div class="row">
-        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
-            <div class="card-deck">
-                <h3 class="user_homepage_row_header">Popular New Books</h3>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- should have cards linking to other friends pages-->
 <div class="container-fluid">
     <div class="row d-flex flex-column justify-content-center align-content-center">
-        <div class="col-5 col-xl-4 col-lg-4 col-md-4 col-sm-6 form-box m-2">
             <h3 class="user_homepage_row_header">See What Your Friends are Loving....</h3>
-
             <div class="card-deck">
                 <div class="card"></div>
                 <div class="card"></div>

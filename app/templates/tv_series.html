@@ -12,70 +12,71 @@ TV Series
 {% block content %}
 <div class="container-fluid m-5">
     <div class="row card_row">
-        <h1 class="deck_header">TV series GROUP 1 - New Releases</h1>
+        <h1 class="deck_header">TRENDING</h1>
         <div class="card-deck">
-            {% for i in range(TV_list_length|length) %}
+            {% for i in range(trending_tv1|length) %}
             <div class="card">
-                <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                <div class="card-text">Poster Pic</div>
-                <div class="card-text">Title</div>
-                <div class="card-text">Description?</div>
-                <div class="buttons d-flex flex-column justify-space-between">
-                    <a class="btn-outline-info">Add to Favorites</a>
-                    <a class="btn-outline-info">Add to Watchlist</a>
+                <img src="https://image.tmdb.org/t/p/w200/{{ trending_tv1[i][0]['poster_path'] }}" alt="{{ trending_tv2[i]['name'] }}" class="tv_poster">
+                <div class="card-text show_title">{{ trending_tv1[i][0]['name'] }}</div>
+                <div class="card-text show_description">{{ trending_tv1[i][0]['overview'] }}</div>       
+                <div class="buttons-group d-flex flex-column justify-space-between">
+                    <a class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
                 </div>
             </div>
             {% endfor %}
         </div> <!-- end of card-deck div-->
     </div> <!--end of row div-->
     <div class="row card_row">
-        <h1 class="deck_header">TV series GROUP 2 - Currently Trending 2</h1>
         <div class="card-deck">
             {% for i in range(trending_tv2|length) %}
             <div class="card">
-                <img src="https://image.tmdb.org/t/p/w200/{{ trending_tv2[i]['pic_path'] }}" alt="{{ trending_tv2[i]['trending_tv_title'] }}" class="tv_poster">
-                <div class="card-text show_title">{{ trending_tv2[i]['trending_tv_title'] }}</div>
-                <div class="card-text show_description">{{ trending_tv2[i]['trending_tv_overview'] }}</div>
+                <img src="https://image.tmdb.org/t/p/w200/{{ trending_tv2[i][0]['poster_path'] }}" alt="{{ trending_tv2[i][0]['name'] }}" class="tv_poster">
+                <div class="card-text show_title">{{ trending_tv2[i][0]['name'] }}</div>
+                <div class="card-text show_description">{{ trending_tv2[i][0]['overview'] }}</div>       
                 <div class="buttons-group d-flex flex-column justify-space-between">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
+                    <a class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
                 </div>
             </div>
             {% endfor %}
         </div> <!-- end of card-deck div-->
     </div> <!--end of row div-->
     <div class="row card_row">
-        <h1 class="deck_header">TRENDING TV</h1>
+        <h1 class="deck_header">TOP RATED</h1>
         <div class="card-deck">
-            {% for i in range(trending_tv1|length) %}
-            <div class="card" style="width: 18rem;">
-                <img src="https://image.tmdb.org/t/p/w200/{{ trending_tv1[i]['pic_path'] }}" alt="{{ trending_tv1[i]['trending_tv_title'] }}" class="tv_poster">
-                <div class="card-text show_title">{{ trending_tv1[i]['trending_tv_title'] }}</div>
-                <div class="card-text show_description">{{ trending_tv1[i]['trending_tv_overview'] }}</div>
-                <div class="buttons d-flex flex-column justify-space-between">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
+            {% for i in range(top_rated_tv|length//2) %}
+            <div class="card">
+                <img src="https://image.tmdb.org/t/p/w200/{{ top_rated_tv[i][0]['poster_path'] }}" alt="{{ top_rated_tv[i]['name'] }}" class="tv_poster">
+                <div class="card-text show_title">{{ top_rated_tv[i][0]['name'] }}</div>
+                <div class="card-text show_description">{{ top_rated_tv[i][0]['overview'] }}</div>       
+                <div class="buttons-group d-flex flex-column justify-space-between">
+                    <a class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
                 </div>
             </div>
             {% endfor %}
         </div> <!-- end of card-deck div-->
     </div> <!--end of row div-->
     <div class="row card_row">
-        <h1 class="deck_header">TV Series GROUP 4 - Family Time Favorites</h1>
+        <h1 class="deck_header">ON THE AIR THIS WEEK</h1>
         <div class="card-deck">
-            {% for i in range(TV_list_length|length) %}
-            <div class="card" style="width: 18rem;">
-                <h4 class="card-header">Card Group - Card #{{ i }}</h4>
-                <div class="card-text">Poster Pic</div>
-                <div class="card-text">Title</div>
-                <div class="card-text">Description?</div>
-                <div class="buttons d-flex flex-column">
-                    <button class="btn-outline-info">Add to Favorites</button>
-                    <button class="btn-outline-info">Add to Watchlist</button>
+            {% for i in range(on_the_air|length//2) %}
+            <div class="card">
+                <img src="https://image.tmdb.org/t/p/w200/{{ on_the_air[i][0]['poster_path'] }}" alt="{{ on_the_air[i]['name'] }}" class="tv_poster">
+                <div class="card-text show_title">{{ on_the_air[i][0]['name'] }}</div>
+                <div class="card-text show_description">{{ on_the_air[i][0]['overview'] }}</div>       
+                <div class="buttons-group d-flex flex-column justify-space-between">
+                    <a class="btn btn-outline-info">Add to Your Favorites</a>
+                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
                 </div>
             </div>
             {% endfor %}
         </div> <!-- end of card-deck div-->
     </div> <!--end of row div-->
+
+
+
+
 </div> <!--end of container div-->
 {% endblock content %}

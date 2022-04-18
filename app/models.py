@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from psycopg2 import Timestamp
 
 db=SQLAlchemy()
 
@@ -22,11 +23,7 @@ followers = db.Table(
     'followers',
     db.Column('follower_id', db.String, db.ForeignKey('user.id')),
     db.Column('user_id', db.String, db.ForeignKey('user.id')),
-
 )
-
-
-
 
 class User(db.Model,UserMixin):
     # lay out columns like would in SQL create table query
@@ -66,5 +63,62 @@ class User(db.Model,UserMixin):
         self.followed.remove(u)
         db.session.commit()
 
+class MovieFaves(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    movie_title = db.Column(db.String(150), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id'))  #user_id is a foreign key to associate entry with user table's id
 
-    
+class MovieWatchlist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    movie_title = db.Column(db.String(150), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id')) #user_id is a foreign key to associate entry with user table's id
+
+class TVSeriesFavorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    show_title = db.Column(db.String(150), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id'))  #user_id is a foreign key to associate entry with user table's id
+
+class TVWatchlist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    show_title = db.Column(db.String(150), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id')) #user_id is a foreign key to associate entry with user table's id
+
+class PodcastListenList(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    podcast_title = db.Column(db.String(150), nullable=False)
+    podcast_company = db.Column(db.String(100))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id'))  #user_id is a foreign key to associate entry with user table's id
+
+class PodcastFavorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    podcast_title = db.Column(db.String(150), nullable=False)
+    popcast_company = db.Column(db.String(150))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id')) #user_id is a foreign key to associate entry with user table's id
+
+class BookFavorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    book_title = db.Column(db.String(250), nullable=False)
+    book_author = db.Column(db.String(250), nullable=False)
+    book_ISBN = db.Column(db.String(35), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id')) #user_id is a foreign key to associate entry with user table's id
+
+class BooketList(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    book_title = db.Column(db.String(250), nullable=False)
+    book_author = db.Column(db.String(250), nullable=False)
+    book_ISBN = db.Column(db.String(35), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id')) #user_id is a foreign key to associate entry with user table's id
+
+class Posts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(275))
+    timestamp = db.Column(db.DateTime, default = datetime.utcnow)
+    user_id = db.Column(db.String, db.ForeignKey('user.id'))

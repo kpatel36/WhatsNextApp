@@ -20,7 +20,7 @@ def login():
                 login_user(user)
                 print(current_user, current_user.__dict__)
                 flash(f'Welcome back {current_user.username}', category='success')
-                return redirect (url_for('user_homepage'))
+                return redirect (url_for('user_lists.newsfeed'))
         # bad form info - let them try again
         flash(f'Login failed, incorrect username or password')
         print('login failed')

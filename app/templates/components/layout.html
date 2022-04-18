@@ -35,12 +35,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('tv_series') }}">TV</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="{{ url_for('podcasts') }}">Podcasts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('books') }}">Books</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('user_lists.findUsers') }}">Find Other Users</a>
             </li>
@@ -61,7 +58,7 @@
                   {{ current_user.username }}
                 </a>
                 <div class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
-                  <a href="{{ url_for('user_homepage') }}" class="dropdown-item">Your Newsfeed</a>
+                  <a href="{{ url_for('user_lists.newsfeed') }}" class="dropdown-item">Your Newsfeed</a>
                   <a href="#" class="dropdown-item">Settings</a>
                   <a href="{{ url_for('auth.logout') }}" class="dropdown-item">Logout</a>
                 </div>

@@ -16,8 +16,8 @@ Find Other Users
         <div class="card align-content-center" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title d-flex justify-content-center" >{{ user.username }}</h5>
-                <h6 class="card-text d-flex flex-wrap justify-content-center">Short_Bio/Personal Quote</h6>
-                <p class="card-text d-flex flex-wrap justify-content-center">Bio</p>
+                {% if user.short_bio %}<h6 class="card-text d-flex flex-wrap justify-content-center">{{ user.short_bio }}</h6>{% endif %}
+                {% if user.bio %} <p class="card-text d-flex flex-wrap justify-content-center">Bio</p>{% endif %}
                 <a href="{{ url_for('user_lists.userProfile', username=user.username) }}" class="btn btn-block btn-outline-primary mt-3">View Profile</a>
                 {% if not current_user.is_authenticated %}
                 <a href="{{ url_for('auth.login') }}" class="btn btn-block btn-outline-info">Login to Follow</a>
