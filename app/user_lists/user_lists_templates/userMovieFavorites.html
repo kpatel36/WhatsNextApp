@@ -6,16 +6,21 @@
 
 {% block content%} 
 <div class="container-fluid">
-    <div class="row">
-        <ul>
-            {% for favorite_movie in users_fave_movies %}
-            <li>
-                <p>{{ favorite_movie.movie_title }} - {{ favorite_movie.timestamp }}</p>
-                <a href="{{ url_for('user_lists.delFromMovie_Faves', mfaves_id=favorite_movie.id) }}" class="btn btn-outline-info">Remove From Your Favorites</a>
-                <a href="{{ url_for('user_lists.addToMovie_Watchlist', movie_title= favorite_movie.movie_title ) }}" class="btn btn-outline-info">Add to Your Watchlist</a>
-            </li>
-            {% endfor %}
-        </ul>
+    <div class="row justify-content-center">
+        <h3 class="page-header text-align-center">@ {{ user.username }} favorite Movies</h3>
+        <div class="card-deck m-5">
+            {% if users_fave_movies %}
+                {% for x in users_fave_movies %}
+                <div class="card d-flex flex-column">
+                    <p>{{ x.movie_title }} - {{ x.timestamp }}</p>
+                    <a href="{{ url_for('user_lists.delFromMovie_Faves', mfaves_id=x.id) }}" class="btn btn-outline-info">Remove From Your Favorites</a>
+                    <a href="{{ url_for('user_lists.addToMovie_Watchlist', movie_title= x.movie_title ) }}" class="btn btn-outline-info">Add to Your Watchlist</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="empty-list">{{ user.username }} currently doesn't have any movies listed in their favorites!! </p>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock content %}

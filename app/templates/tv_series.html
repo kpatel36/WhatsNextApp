@@ -10,66 +10,75 @@ TV Series
 
 
 {% block content %}
-<div class="container-fluid m-5">
-    <div class="row card_row">
-        <h1 class="deck_header">TRENDING</h1>
-        <div class="card-deck">
-            {% for i in range(trending_tv1|length) %}
-            <div class="card">
-                <img src="https://image.tmdb.org/t/p/w200/{{ trending_tv1[i][0]['poster_path'] }}" alt="{{ trending_tv2[i]['name'] }}" class="tv_poster">
-                <div class="card-text show_title">{{ trending_tv1[i][0]['name'] }}</div>
-                <div class="card-text show_description">{{ trending_tv1[i][0]['overview'] }}</div>       
-                <div class="buttons-group d-flex flex-column justify-space-between">
-                    <a class="btn btn-outline-info">Add to Your Favorites</a>
-                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
-                </div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="page_header text-size">TV</h1>
+    </div>
+    <div class="row ml-4">
+        <h3 class="deck_header">TRENDING</h3>
+    </div>
+    <div class="media-scroller bg-dark snaps-inline pl-4 pr-4 ml-4 mr-4">
+        {% for i in range(trending_tv_full|length) %}
+        <div class="media-card d-flex flex-column text-align-center">
+            <h5 class="card-title d-flex justify-content-center bg-transparent">{{ trending_tv_full[i][0]['name'] }}</h5>
+            <img src="https://image.tmdb.org/t/p/w200/{{ trending_tv_full[i][0]['poster_path'] }}" alt="{{ trending_tv_full[i][0]['name'] }}" class="tv_poster">
+            <div class="show-description pt-3 bg-transparent">{{ trending_tv_full[i][0]['overview'] }}</div>
+            {% if current_user.is_authenticated %}
+            <div class="buttons-group d-flex flex-column justify-space-between">
+                
+                <a href="{{ url_for('user_lists.addToTV_Faves', show_title=trending_tv_full[i][0]['name']) }}" class="btn btn-outline-info mt-4 mb-4">Add to Your Favorites</a>
+                <a href="{{ url_for('user_lists.addToTV_Watchlist', show_title=trending_tv_full[i][0]['name']) }}" class="btn btn-outline-info mt-4 mb-4">Add to Your Watchlist</a>
             </div>
-            {% endfor %}
-        </div> <!-- end of card-deck div-->
-    </div> <!--end of row div-->
-    <div class="row card_row">
-        <div class="card-deck">
-            {% for i in range(trending_tv2|length) %}
-            <div class="card">
-                <img src="https://image.tmdb.org/t/p/w200/{{ trending_tv2[i][0]['poster_path'] }}" alt="{{ trending_tv2[i][0]['name'] }}" class="tv_poster">
-                <div class="card-text show_title">{{ trending_tv2[i][0]['name'] }}</div>
-                <div class="card-text show_description">{{ trending_tv2[i][0]['overview'] }}</div>       
-                <div class="buttons-group d-flex flex-column justify-space-between">
-                    <a class="btn btn-outline-info">Add to Your Favorites</a>
-                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
-                </div>
+            {% else %}
+            <div class="buttons-group">
+                <a href="{{ url_for('auth.login') }}" class="btn btn-info">Login/Register to Start Favorites/Watchlist</a>
             </div>
-            {% endfor %}
-        </div> <!-- end of card-deck div-->
-    </div> <!--end of row div-->
-    <div class="row card_row">
-        <h1 class="deck_header">TOP RATED</h1>
-        <div class="card-deck">
-            {% for i in range(top_rated_tv|length//2) %}
-            <div class="card">
-                <img src="https://image.tmdb.org/t/p/w200/{{ top_rated_tv[i][0]['poster_path'] }}" alt="{{ top_rated_tv[i]['name'] }}" class="tv_poster">
-                <div class="card-text show_title">{{ top_rated_tv[i][0]['name'] }}</div>
-                <div class="card-text show_description">{{ top_rated_tv[i][0]['overview'] }}</div>       
-                <div class="buttons-group d-flex flex-column justify-space-between">
-                    <a class="btn btn-outline-info">Add to Your Favorites</a>
-                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
-                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <div class="row ml-4">
+        <h3 class="deck_header">TOP RATED</h3>
+    </div>
+    <div class="media-scroller bg-dark snaps-inline pr-4 pl-4 ml-4 mr-4">
+        {% for i in range(top_rated_tv|length) %}
+        <div class="media-card d-flex flex-column">
+            <h5 class="card-title d-flex justify-content-center bg-transparent">{{ top_rated_tv[i][0]['name'] }}</h5>
+            <img src="https://image.tmdb.org/t/p/w200/{{ top_rated_tv[i][0]['poster_path'] }}" alt="{{ top_rated_tv[i]['name'] }}" class="tv_poster">
+            <div class="card-text bg-transparent show_description">{{ top_rated_tv[i][0]['overview'] }}</div>       
+            {% if current_user.is_authenticated %}
+            <div class="buttons-group d-flex flex-column justify-space-between">
+                <a href="{{ url_for('user_lists.addToTV_Faves', show_title=top_rated_tv[i][0]['name']) }}" class="btn btn-outline-info mt-4 mb-4">Add to Your Favorites</a>
+                <a href="{{ url_for('user_lists.addToTV_Watchlist', show_title=top_rated_tv[i][0]['name']) }}" class="btn btn-outline-info mt-4 mb-4">Add to Your Watchlist</a>
             </div>
-            {% endfor %}
-        </div> <!-- end of card-deck div-->
-    </div> <!--end of row div-->
-    <div class="row card_row">
-        <h1 class="deck_header">ON THE AIR THIS WEEK</h1>
-        <div class="card-deck">
-            {% for i in range(on_the_air|length//2) %}
-            <div class="card">
+            {% else %}
+            <div class="buttons-group">
+                <a href="{{ url_for('auth.login') }}" class="btn btn-info">Login/Register to Start Favorites/Watchlist</a>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div> 
+    <div class="row ml-4">
+        <h3 class="deck_header">ON THE AIR THIS WEEK</h3>
+    </div>
+    <div class="media-scroller bg-dark snaps-inline ml-4 mr-4">
+            {% for i in range(on_the_air|length) %}
+            <div class="media-card d-flex flex-column text-align-center">
+                <h5 class="card-title d-flex bg-transparent justify-content-center">{{ on_the_air[i][0]['name'] }}</h5>
                 <img src="https://image.tmdb.org/t/p/w200/{{ on_the_air[i][0]['poster_path'] }}" alt="{{ on_the_air[i]['name'] }}" class="tv_poster">
-                <div class="card-text show_title">{{ on_the_air[i][0]['name'] }}</div>
-                <div class="card-text show_description">{{ on_the_air[i][0]['overview'] }}</div>       
+                <div class="card-text show_description bg-transparent">{{ on_the_air[i][0]['overview'] }}</div>       
+                {% if current_user.is_authenticated %}
                 <div class="buttons-group d-flex flex-column justify-space-between">
-                    <a class="btn btn-outline-info">Add to Your Favorites</a>
-                    <a class="btn btn-outline-info">Add to Your Watchlist</a>
+                    <a href="{{ url_for('user_lists.addToTV_Faves', show_title=on_the_air[i][0]['name']) }}" class="btn btn-outline-info mt-4 mb-4">Add to Your Favorites</a>
+                    <a href="{{ url_for('user_lists.addToTV_Watchlist', show_title=on_the_air[i][0]['name']) }}" class="btn btn-outline-info mt-4 mb-4">Add to Your Watchlist</a>
                 </div>
+                {% else %}
+                <div class="buttons-group">
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-info">Login/Register to Start Favorites/Watchlist</a>
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
         </div> <!-- end of card-deck div-->

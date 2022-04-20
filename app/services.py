@@ -2,16 +2,12 @@ import os
 import requests as r
 
 
-
-
-
 def genre_list():
     genres=[]
     tmdb_api_key = os.environ.get('tmdb_api_key')
     get_genres_list = r.get(f"https://api.themoviedb.org/3/genre/movie/list?api_key={tmdb_api_key}&language=en-US")
     if get_genres_list.status_code==200:
         get_genres_list=get_genres_list.json()
-        print(get_genres_list)
     else:
         print(get_genres_list.status_code)
     return get_genres_list
@@ -26,7 +22,6 @@ def get_now_playing_movies():
         now_playing_movies=now_playing_movies_response.json()
         for x in now_playing_movies['results']:
             now_playing.append([x].copy())
-        print(now_playing)
     else:
         print(now_playing_movies_response.status_code)
         now_playing.append(now_playing_movies_response)
@@ -74,7 +69,7 @@ def get_trending_movies2():
 def get_trending_tv():
     trending_tv=[]
     tmdb_api_key=os.environ.get('tmdb_api_key')
-    trending_tv_response = r.get(f'https://api.themoviedb.org/3/trending/tv/week?api_key={tmdb_api_key}&language=en-US')
+    trending_tv_response = r.get(f'https://api.themoviedb.org/3/trending/tv/week?api_key={tmdb_api_key}&language=en-US&region=US')
     if trending_tv_response.status_code == 200:
         trending_this_week_tv = trending_tv_response.json()
         for x in trending_this_week_tv['results']:
@@ -99,7 +94,7 @@ def get_top_rated_tv():
 def homepage_tv_show_list():
     hp_tv_list = []
     tmdb_api_key=os.environ.get('tmdb_api_key')
-    tv_listings = r.get(f'https://api.themoviedb.org/3/tv/on_the_air?api_key={tmdb_api_key}&language=en-US&page=1')
+    tv_listings = r.get(f'https://api.themoviedb.org/3/tv/on_the_air?api_key={tmdb_api_key}&language=en-US&region=US&page=1')
     if tv_listings.status_code == 200:
         tv_listings = tv_listings.json()
         for x in tv_listings['results']:
@@ -111,7 +106,7 @@ def homepage_tv_show_list():
 def latest_tv():
     latest_tv_list = []
     tmdb_api_key=os.environ.get('tmdb_api_key')
-    tv_listings = r.get(f'https://api.themoviedb.org/3/tv/on_the_air?api_key={tmdb_api_key}&language=en-US&page=1')
+    tv_listings = r.get(f'https://api.themoviedb.org/3/tv/on_the_air?api_key={tmdb_api_key}&language=en-US&region=US&page=1')
     if tv_listings.status_code == 200:
         tv_listings = tv_listings.json()
         for x in tv_listings['results']:

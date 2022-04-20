@@ -26,9 +26,9 @@
 <!--S2, S3 are similar just matters if user is logged in-->
 <!-- S2: if user is logged in, will see follow/unfollow button for that user whose profile we are on, and add to watchlist/add to favorites buttons -->
 <!-- S3: if user is not logged in, will see a 'register/sign in to follow button'-->
-    <div class="row m-4 justify-content-between">
-        <div class="col-4 justify-content-center">
-            <div class="side-panel_card align-content-center justify-content-center float-right mr-4">
+    <div class="row d-flex m-4 justify-content-between">
+        <div class="col-4 justify-content-center mr-auto">
+            <div class="side-panel_card align-content-center justify-content-center float-right mr-4" style="width:18rem">
                 <div class="card-body">
                     <h5 class="card-title d-flex justify-content-center" >@{{ user.username }}</h5>
                     {% if user.short_bio %}
@@ -93,6 +93,18 @@
                 <div class="card">
                     <h3 class="class-header">{{ user.username }} Movie Watchlist</h3>
                     <a href="{{ url_for('user_lists.viewUserMovieWatchlist', username=user.username) }}" class="btn btn-outline-danger">Movie Watchlist</a>
+                </div>
+                {% endif %}
+                {% if tv_fave_list %}
+                <div class="card">
+                    <h3 class="card-header">{{ user.username }} TV Favorites</h3>
+                    <a href="{{ url_for('user_lists.viewUserTVFavorites', username=user.username) }}" class="btn btn-outline-danger">TV Favorites</a>
+                </div>
+                {% endif %}
+                {% if tv_watchlist %}
+                <div class="card">
+                    <h3 class="class-header">{{ user.username }} TV Watchlist</h3>
+                    <a href="{{ url_for('user_lists.viewUserTVWatchlist', username=user.username) }}" class="btn btn-outline-danger">TV Watchlist</a>
                 </div>
                 {% endif %}
             </div>

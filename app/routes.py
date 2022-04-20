@@ -26,7 +26,7 @@ def movies():
     trend_movies = get_trending_movies2()
     pop = get_popular_movies()
     print(trend_movies[1])
-    
+
     print('trying to look at movies page')    
     return render_template('movies.html', now_playing_movies=now_playing_movies,pop=pop, trend_movies=trend_movies)
 
@@ -38,7 +38,7 @@ def tv_series():
     trending_tv2=trending_tv[mi:]
     on_the_air = homepage_tv_show_list()
     top_rated_tv = get_top_rated_tv()
-    return render_template('tv_series.html',on_the_air=on_the_air, top_rated_tv=top_rated_tv, trending_tv1=trending_tv1,trending_tv2=trending_tv2)
+    return render_template('tv_series.html',trending_tv_full=trending_tv,on_the_air=on_the_air, top_rated_tv=top_rated_tv)
 
 @app.route('/podcasts')
 def podcasts():

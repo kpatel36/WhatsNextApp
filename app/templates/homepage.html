@@ -5,39 +5,34 @@ Home
 {% endblock title %}
 
 {% block content %}
-<div class="container-fluid d-flex flex-column justify-content-center">
+<div class="container-fluid">
     <!-- row for TV SERIES -->
     <div class="row d-flex flex-column justify-content-between ml-4 mb-0">
-        <h1 class="deck_header">TRENDING TV SERIES</h1>
+        <h1 class="deck_header font-weight-bolder">TRENDING TV SERIES</h1>
         <a href="{{ url_for('tv_series') }}" class="view_more_link">View More>>></a>
     </div>
-    <div class="row d-flex justify-content-center m-4">
-        <div class="card-deck d-flex flex-row">
-            {% for i in range(home_tv_shows|length//2) %}
-            <div class="card p-4 d-flex flex-column justify-content-center align-content-center">
-                <img src="https://image.tmdb.org/t/p/w200/{{ home_tv_shows[i][0]['poster_path'] }}" alt="{{  home_tv_shows[i][0]['title'] }}" class="movie-poster">
-                <div class="card-text">{{  home_tv_shows[i][0]['name'] }}</div>
-            </div>
-            {% endfor %}
+    <div class="media-scroller bg-dark snaps-inline pl-4 pr-4 ml-4 mr-4">
+        {% for i in range(home_tv_shows|length//2) %}
+        <div class="media-card d-flex flex-column justify-content-center align-content-center">
+            <img src="https://image.tmdb.org/t/p/w200/{{ home_tv_shows[i][0]['poster_path'] }}" alt="{{  home_tv_shows[i][0]['title'] }}" class="movie-poster">
+            <div class="card-text bg-transparent justify-content-center">{{  home_tv_shows[i][0]['name'] }}</div>
         </div>
-    </div> <!--end of row div-->
+        {% endfor %}
+    </div> <!--end of media-scroller div-->
 
     <!-- row for MOVIES -->
     <div class="row d-flex flex-column justify-content-between m-4 mb-0">
-        <h1 class="deck_header font-weight-bolder">MOVIES TRENDING TODAY</h1>
+        <h1 class="deck_header font-weight-bolder">TRENDING MOVIES</h1>
         <a href="{{ url_for('movies') }}" class="font-size-large view_more_link">View More>>></a>
     </div>
-    <div class="row d-flex justify-content-center m-4">
-        <div class="card-deck d-flex flex-row">
-            {% for i in range(home_movies_list|length//2) %}
-            <div class="card p-4 d-flex flex-column align-content-center">
-                <img src="https://image.tmdb.org/t/p/w200/{{ home_movies_list[i][0]['poster_path'] }}" alt="{{  home_movies_list[i][0]['title'] }}" class="movie-poster">
-                <div class="card-text justify-content-center mt-2">{{  home_movies_list[i][0]['title'] }}</div>
-            </div>
-            {% endfor %}
+    <div class="media-scroller bg-dark snaps-inline pl-4 pr-4 ml-4 mr-4">
+        {% for i in range(home_movies_list|length//2) %}
+        <div class="media-card p-4 d-flex flex-column justify-content-center">
+            <img src="https://image.tmdb.org/t/p/w200/{{ home_movies_list[i][0]['poster_path'] }}" alt="{{  home_movies_list[i][0]['title'] }}" class="movie-poster">
+            <div class="card-text bg-transparent justify-content-center mt-2">{{  home_movies_list[i][0]['title'] }}</div>
         </div>
-    </div> <!--end of row div-->
+        {% endfor %}
+    </div> <!--end of media-scroller div-->
 
-    <!-- row for PODCASTS -->
 </div>
 {% endblock content %}

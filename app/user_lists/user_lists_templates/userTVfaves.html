@@ -1,0 +1,26 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}
+{{ user.username }}'s TV Favorites
+{% endblock title %}
+
+{% block content%} 
+<div class="container-fluid">
+    <div class="row d-flex flex-column">
+        <h3 class="page-header">@ {{ user.username }} favorite TV Shows</h3>
+        <div class="card-deck m-5">
+            {% if users_TV_watchlist %}
+                {% for x in users_fave_tv %}
+                <div class="card" style="width: 18px">
+                    <p>{{ x.show_title }} - {{ x.timestamp }}</p>
+                    <a href="{{ url_for('user_lists.delFromTV_Faves', tvfaves_id=x.id) }}" class="btn btn-outline-info">Remove from Your TV Favorites</a>
+                    <a href="{{ url_for('user_lists.addToTV_Watchlist', show_title=x.show_title) }}" class="btn btn-outline-info">Add to Your TV Watchlist</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="empty-list">{{ user.username }} currently doesn't have any favorite TV shows listed! </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

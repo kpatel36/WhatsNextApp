@@ -18,7 +18,7 @@ body{
 .navbar-toggler-icon{
     color: white;
     background-color: rgb(26, 58, 68);
-    border: 5px solid green;
+    border: 5px solid darkslategray;
 }
 
 
@@ -66,10 +66,58 @@ body{
     box-shadow: 2px 3px 4px lightslategray;
 }
 
+.media-scroller{
+    --_spacer: 2rem;
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+    grid-auto-columns: 12.5%;
+    margin: var(--_spacer);
+    padding: var(--_spacer);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    box-shadow: 0px 0px 5px 3px lightslategrey;
+
+}
+
+.snaps-inline{
+    scroll-snap-type: inline mandatory;
+}
+
+.snaps-inline > *{
+    scroll-snap-align: start;
+    scroll-padding-inline: var(--_spacer);
+}
+
+.media-card{
+    display: grid;
+    grid-template-rows: min-content;
+    padding: var(--_spacer);
+    background-color:rgb(16, 37, 37);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.media-card>img{
+    inline-size: 100%;
+    object-fit: cover;
+}
+
+/* .card-text{
+    padding: 1.5em;
+    background: linear-gradient(
+        hsl(0 0% 0% / 0),
+        hsl(20 0% 0% / 0.35) 250%, 
+        hsl(0 0% 0% / 1)
+    );
+} */
+
 .card:hover{
     box-shadow: 0px 3px 6px darkblue;
 }
 
 .buttons-group{
+    background-color: transparent;
     justify-content: space-between;
+    margin: 4px;
 }
